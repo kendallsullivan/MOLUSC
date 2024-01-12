@@ -1922,9 +1922,9 @@ class Application:
 		if self.ao_filename[0] and not self.filter:
 			print('AO given without filter')
 			return False
-		if self.star_jitter != -1 and not self.rv_filename:
-			print('RV File needs to be given for stellar jitter test')
-			return False
+		# if self.star_jitter != -1 and not self.rv_filename:
+		# 	print('RV File needs to be given for stellar jitter test')
+		# 	return False
 
 		return True
 

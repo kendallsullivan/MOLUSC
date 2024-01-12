@@ -22,8 +22,8 @@ out_file = 'output_corner.pdf'  # writeout file for the corner plots
 out_file2 = 'output_dtct_lims.pdf' # writeout file for the detection limit plots
 out_file3 = 'output_srv.pdf' # writeout file for the survivor plots
 # Other
-n = 5000000  # number of companions generated in run
-mass = 1.01  # target mass in solar masses
+n = 10000  # number of companions generated in run
+mass = 0.953  # target mass in solar masses
 
 # Convenience functions
 def jup_mass_to_sol(jupiter_mass):
@@ -43,7 +43,7 @@ def a_to_period(a):
     G = 39.478 # Gravitational constant in AU^3/years^2*M_solar
     return np.sqrt((4*np.pi**2 * a**3) / (2*G)) * 365
   
-  def corner(file_in, file_out=None, given_params='auto', n_gen=5000000, smoothing=False, color='blue'):
+def corner(file_in, file_out=None, given_params='auto', n_gen=5000000, smoothing=False, color='blue'):
     # Creates a corner plot showing period, mass ratio, eccentricity and inclination
     # Plot is a 4x4 array of subplots, with the bottom left triangle showing contour plots of 2D parameter spaces
     # The diagonal subplots show histograms of each of the parameters. The top right triangle lists the surviving
@@ -465,6 +465,6 @@ def survivor(survivors_file, all_file, param, file_out=None):
   return
 
 # Comment and uncomment as needed
-# corner(survivors_file,  n_gen=n, given_params='all', smoothing=True, file_out=out_file)
-# detection_limits(survivors_file, mass, file_out=out_file2
-# survivor(survivors_file, all_file, param='P', file_out=out_file3)
+corner(survivors_file,  n_gen=n, given_params='all', smoothing=True, file_out=out_file)
+detection_limits(survivors_file, mass, file_out=out_file2)
+survivor(survivors_file, all_file, param='P', file_out=out_file3)
